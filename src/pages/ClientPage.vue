@@ -5,13 +5,16 @@
       <!-- List of clients -->
       <!-- TODO Si liste vide affiche un message à la place de la liste -->
       <q-list
+        v-if="clientsLoaded"
         class="rounded-borders"
         bordered
         separator
       >
         <!-- Client -->
-        <ClientComponent v-for="client in clientList" :key="client.id" :client="client"/>
+        <q-item v-if="clientList.length === 0">No clients could be loaded. Please check your internet connection.</q-item>
+        <ClientComponent v-else v-for="client in clientList" :key="client.id" :client="client"/>
       </q-list>
+      <q-skeleton v-else/>
     </q-page>
 </template>
 
@@ -25,7 +28,7 @@ export default {
     ClientComponent
   },
   computed: {
-    ...mapGetters('clients', ['clientList'])
+    ...mapGetters('clients', ['clientList', 'clientsLoaded'])
   },
   methods: {
     ...mapActions('clients', ['AC_GetClientApi'])

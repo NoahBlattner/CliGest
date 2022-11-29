@@ -5,7 +5,8 @@
 import { api } from 'boot/axios'
 
 const state = {
-  clientList: [] // TODO ajout clientCharges: false
+  clientList: [],
+  clientsLoaded: false
 }
 
 /*
@@ -14,8 +15,11 @@ Les mutations ne peuvent pas être asynchrones !!!
  */
 const mutations = {
   // Set the list of clients
-  SET_CLIENTS (state, payload) {
-    state.clientList = structuredClone(payload)
+  SET_CLIENTS (state, clientList) {
+    state.clientList = structuredClone(clientList)
+  },
+  SET_LOADED (state, newLoadedState) {
+    state.clientsLoaded = newLoadedState
   }
 }
 /*
@@ -23,17 +27,19 @@ Actions : méthodes du magasin qui font appel aux mutations
 Elles peuvent être asynchrones !
  */
 const actions = {
-  // TODO mettre clientCharges a false
   // Action that loads the clients from an API and saves them
   AC_GetClientApi (context) {
+    context.commit('SET_LOADED', false)
     api.get('https://randomuser.me/api/?results=100&nat=CH')
       .then(function (response) {
         context.commit('SET_CLIENTS', response.data.results)
       })
       .catch(function (error) {
-        console.log(error) // TODO Avertir utilisateur
         throw error
       }) // TODO finally mettre clientCharges a true
+      .finally(function () {
+        context.commit('SET_LOADED', true)
+      })
   }
 }
 
@@ -46,6 +52,9 @@ const getters = {
   // Get the current list of clients
   clientList: function (state) {
     return state.clientList // TODO Tri par nom, prénom A-Z
+  },
+  clientsLoaded: function (state) {
+    return state.clientsLoaded
   }
 }
 
