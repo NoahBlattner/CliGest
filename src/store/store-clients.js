@@ -13,6 +13,7 @@ Mutations : méthode qui manipulent les données
 Les mutations ne peuvent pas être asynchrones !!!
  */
 const mutations = {
+  // Set the list of clients
   SET_CLIENTS (state, payload) {
     state.clientList = payload
   }
@@ -22,6 +23,7 @@ Actions : méthodes du magasin qui font appel aux mutations
 Elles peuvent être asynchrones !
  */
 const actions = {
+  // Action that loads the clients from an API and saves them
   AC_GetClientApi (context) {
     api.get('https://randomuser.me/api/?results=100&nat=CH')
       .then(function (response) {
@@ -40,6 +42,7 @@ Fonctionne comme les propriétés calculées
 Sert à calculer, trier, filtrer ou formater les donneés
  */
 const getters = {
+  // Get the current list of clients
   clientList: function (state) {
     return state.clientList
   }

@@ -1,11 +1,14 @@
 <template>
     <q-page padding>
       <h3>Liste des clients</h3>
+
+      <!-- List of clients -->
       <q-list
         class="rounded-borders"
         bordered
         separator
       >
+        <!-- Client -->
         <ClientComponent v-for="client in clientList" :key="client.id" :client="client"/>
       </q-list>
     </q-page>
@@ -27,6 +30,7 @@ export default {
     ...mapActions('clients', ['AC_GetClientApi'])
   },
   mounted () {
+    // Load clients from API
     this.AC_GetClientApi()
   }
 }
