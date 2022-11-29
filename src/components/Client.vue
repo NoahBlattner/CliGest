@@ -3,7 +3,7 @@
     <!-- Photo du client -->
     <q-item-section avatar>
       <q-avatar>
-        <img :src="client.img">
+        <img :src="client.picture.large">
       </q-avatar>
     </q-item-section>
 
