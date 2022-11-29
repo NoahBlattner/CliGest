@@ -1,5 +1,4 @@
 <template>
-  <template>
     <q-page padding>
       <h3>Liste des clients</h3>
       <q-list
@@ -7,10 +6,9 @@
         bordered
         separator
       >
-        <ClientComponent v-for="client in clientsList" :key="client.id" :client="client"/>
+        <ClientComponent v-for="client in clientList" :key="client.id" :client="client"/>
       </q-list>
     </q-page>
-  </template>
 </template>
 
 <script>
