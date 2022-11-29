@@ -5,7 +5,7 @@
 import { api } from 'boot/axios'
 
 const state = {
-  clientList: []
+  clientList: [] // TODO ajout clientCharges: false
 }
 
 /*
@@ -23,6 +23,7 @@ Actions : méthodes du magasin qui font appel aux mutations
 Elles peuvent être asynchrones !
  */
 const actions = {
+  // TODO mettre clientCharges a false
   // Action that loads the clients from an API and saves them
   AC_GetClientApi (context) {
     api.get('https://randomuser.me/api/?results=100&nat=CH')
@@ -32,7 +33,7 @@ const actions = {
       .catch(function (error) {
         console.log(error) // TODO Avertir utilisateur
         throw error
-      })
+      }) // TODO finally mettre clientCharges a true
   }
 }
 
