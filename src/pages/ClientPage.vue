@@ -3,6 +3,7 @@
       <h3>Liste des clients</h3>
 
       <!-- List of clients -->
+      <!-- TODO Si liste vide affiche un message à la place de la liste -->
       <q-list
         class="rounded-borders"
         bordered

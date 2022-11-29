@@ -49,7 +49,7 @@
 
     <q-footer elevated>
       <q-tabs>
-        <q-route-tab v-for="link in linkList" :key="link.id"
+        <q-route-tab v-for="link in linksList" :key="link.id"
                      :to="link.path"
                      :icon="link.icon"
                      :label="link.text"

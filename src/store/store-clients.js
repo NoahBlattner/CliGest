@@ -15,7 +15,7 @@ Les mutations ne peuvent pas être asynchrones !!!
 const mutations = {
   // Set the list of clients
   SET_CLIENTS (state, payload) {
-    state.clientList = payload
+    state.clientList = structuredClone(payload)
   }
 }
 /*
@@ -30,7 +30,7 @@ const actions = {
         context.commit('SET_CLIENTS', response.data.results)
       })
       .catch(function (error) {
-        console.log(error)
+        console.log(error) // TODO Avertir utilisateur
         throw error
       })
   }
@@ -44,7 +44,7 @@ Sert à calculer, trier, filtrer ou formater les donneés
 const getters = {
   // Get the current list of clients
   clientList: function (state) {
-    return state.clientList
+    return state.clientList // TODO Tri par nom, prénom A-Z
   }
 }
 
