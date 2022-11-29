@@ -1,19 +1,27 @@
 <template>
-  <q-item v-ripple bordered>
-    <q-item-section side>
-      <q-img :src="client.img"/>
+  <q-item clickable v-ripple>
+    <!-- Photo du client -->
+    <q-item-section avatar>
+      <q-avatar>
+        <img :src="client.img">
+      </q-avatar>
     </q-item-section>
-    <q-item-section side>
-      <div class="column">
-        <q-item-label class="text-left" caption>{{ client.name }}</q-item-label>
-        <q-item-label class="text-left" caption>{{ client.email }}</q-item-label>
-      </div>
+
+    <!-- Nom, prénom et email du client -->
+    <q-item-section>
+      <q-item-label lines="1">
+        {{ client.name }}
+      </q-item-label>
+      <q-item-label caption lines="2">
+        {{ client.email }}
+      </q-item-label>
     </q-item-section>
+
+    <!-- Icône email -->
     <q-item-section side>
-      <q-icon icon="email"/>
+      <q-icon name="email" color="primary"/>
     </q-item-section>
   </q-item>
-  <q-separator/>
 </template>
 
 <script>
