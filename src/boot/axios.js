@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'https://clients.kode.ch/api',
+  baseURL: '',
   timeout: 3000,
   headers: {
     Accept: 'application/json',

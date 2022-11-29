@@ -23,9 +23,9 @@ Elles peuvent être asynchrones !
  */
 const actions = {
   AC_GetClientApi (context) {
-    api.get('/clients')
+    api.get('https://randomuser.me/api/?results=100&nat=CH')
       .then(function (response) {
-        context.commit('SET_CLIENTS', response.data)
+        context.commit('SET_CLIENTS', response.data.results)
       })
       .catch(function (error) {
         console.log(error)
