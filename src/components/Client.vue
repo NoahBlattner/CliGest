@@ -10,7 +10,7 @@
     <!-- Firstname, lastname and email of the client -->
     <q-item-section>
       <q-item-label lines="1">
-        {{ client.name.first + ' ' + client.name.last }}
+        {{ client.name.last + ' ' + client.name.first }}
       </q-item-label>
       <q-item-label caption lines="2">
         {{ client.email }}

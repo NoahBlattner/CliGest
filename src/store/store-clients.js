@@ -36,7 +36,7 @@ const actions = {
       })
       .catch(function (error) {
         throw error
-      }) // TODO finally mettre clientCharges a true
+      })
       .finally(function () {
         context.commit('SET_LOADED', true)
       })
@@ -51,7 +51,18 @@ Sert à calculer, trier, filtrer ou formater les donneés
 const getters = {
   // Get the current list of clients
   clientList: function (state) {
-    return state.clientList // TODO Tri par nom, prénom A-Z
+    return state.clientList
+  },
+  clientListAZ: function (state) {
+    let list = structuredClone(state.clientList)
+    list = list.sort(function (a, b) {
+      let order = a.name.last.localeCompare(b.name.last)
+      if (order === 0) {
+        order = a.name.first.localeCompare(b.name.first)
+      }
+      return order
+    })
+    return list
   },
   clientsLoaded: function (state) {
     return state.clientsLoaded

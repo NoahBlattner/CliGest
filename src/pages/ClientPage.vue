@@ -3,7 +3,6 @@
       <h3>Liste des clients</h3>
 
       <!-- List of clients -->
-      <!-- TODO Si liste vide affiche un message à la place de la liste -->
       <q-list
         v-if="clientsLoaded"
         class="rounded-borders"
@@ -11,8 +10,8 @@
         separator
       >
         <!-- Client -->
-        <q-item v-if="clientList.length === 0">No clients could be loaded. Please check your internet connection.</q-item>
-        <ClientComponent v-else v-for="client in clientList" :key="client.id" :client="client"/>
+        <q-item v-if="clientListAZ.length === 0">No clients could be loaded. Please check your internet connection.</q-item>
+        <ClientComponent v-else v-for="client in clientListAZ" :key="client.id" :client="client"/>
       </q-list>
       <q-skeleton v-else/>
     </q-page>
@@ -28,7 +27,7 @@ export default {
     ClientComponent
   },
   computed: {
-    ...mapGetters('clients', ['clientList', 'clientsLoaded'])
+    ...mapGetters('clients', ['clientListAZ', 'clientsLoaded'])
   },
   methods: {
     ...mapActions('clients', ['AC_GetClientApi'])
